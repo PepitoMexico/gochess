@@ -4,6 +4,7 @@ import (
 	"database/sql"
 
 	"github.com/google/uuid"
+	"github.com/spf13/viper"
 )
 
 type User struct {
@@ -31,6 +32,9 @@ func createUser(name string) {
 	id := uuid.New().String()
 
 	user := New(name, id)
+
+	viper.SetConfigName("config")
+
 	db, err := sql.Open("mysql", "gochess:password@/dbname")
 	if err != nil {
 		panic(err)

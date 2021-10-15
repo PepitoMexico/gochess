@@ -1,4 +1,5 @@
-database.driver="mysql"
-database.host="host"
-database.user="username"
-database.password="password"
+database:
+  driver: mysql
+  host: host
+  user: username
+  password: password
