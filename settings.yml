@@ -1,5 +1,6 @@
 database:
   driver: mysql
-  host: host
-  user: username
-  password: password
+  database: gochess
+  host: localhost
+  username: gochess
+  password: papayete05

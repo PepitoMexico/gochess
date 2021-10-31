@@ -2,9 +2,11 @@ package user
 
 import (
 	"database/sql"
+	"fmt"
+	"gochess/gochess/internal/config"
 
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/google/uuid"
-	"github.com/spf13/viper"
 )
 
 type User struct {
@@ -28,19 +30,22 @@ func New(name string, id string) User {
 	return User{name, id}
 }
 
-func createUser(name string) {
-	id := uuid.New().String()
+func CreateUser(name string) User {
 
-	user := New(name, id)
-
-	viper.SetConfigName("config")
-
-	db, err := sql.Open("mysql", "gochess:password@/dbname")
+	driver := config.GetConfig().GetString("database.driver")
+	host := config.GetConfig().GetString("database.host")
+	database := config.GetConfig().GetString("database.database")
+	username := config.GetConfig().GetString("database.username")
+	password := config.GetConfig().GetString("database.password")
+	fmt.Print(username + ":" + password + "@tcp(" + host + ")/" + database)
+	db, err := sql.Open(driver, username+":"+password+"@tcp("+host+")/"+database)
 	if err != nil {
 		panic(err)
 	}
-	db.r
-
+	id := uuid.New().String()
+	user := New(name, id)
+	db.Exec("INSERT INTO `users` (`id`, `name`) VALUES ('" + user.Id + "', '" + user.Name + "')")
+	return user
 }
 
 func (user *User) setName(name string) {
