@@ -1,0 +1,6 @@
+database:
+  driver: mysql
+  database: gochess
+  host: localhost
+  username: gochess
+  password: papayete05
