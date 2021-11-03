@@ -6,7 +6,8 @@ COPY go.mod ./
 COPY go.sum ./
 RUN go mod download
 
-COPY *.go ./
+COPY cmd/backend/*.go ./
+COPY cmd/frontend/*.go ./
 
 RUN go build -o /gochess
 
