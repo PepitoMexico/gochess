@@ -6,7 +6,7 @@ COPY go.mod ./
 COPY go.sum ./
 RUN go mod download
 
-RUN go build .\cmd\backend\main.go -o /gochess
+RUN go build ./cmd/gochess/gochess.go
 
 EXPOSE 8080
 
