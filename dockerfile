@@ -9,7 +9,7 @@ RUN go mod download
 COPY cmd/backend/*.go ./
 COPY cmd/frontend/*.go ./
 
-RUN go build -o /gochess
+RUN go build -o /gochess .
 
 EXPOSE 8080
 
