@@ -11,8 +11,6 @@ RUN go mod download
 
 RUN go build ./cmd/gochess/gochess.go
 
-RUN go install
-
 EXPOSE 8080
 
 CMD [ "gochess" ]
