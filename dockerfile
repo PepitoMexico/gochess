@@ -13,4 +13,4 @@ RUN go build ./cmd/gochess/gochess.go
 
 EXPOSE 8080
 
-CMD [ "gochess" ]
+CMD [ "./gochess" ]
