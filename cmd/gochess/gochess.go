@@ -11,6 +11,6 @@ func main() {
 	fmt.Println("Starting backend...")
 
 	http.Handle("/", http.FileServer(http.Dir("../../web")))
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":80", nil)
 
 }
