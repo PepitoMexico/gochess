@@ -6,11 +6,18 @@ import (
 )
 
 func main() {
-	fmt.Println("Starting...")
+	fmt.Println("[GLOBAL] Starting Gochess...")
 
-	fmt.Println("Starting backend...")
+	fmt.Println("[BACKEND] Starting backend API...")
+
+	fmt.Println("[BACKEND] Started backend API...")
+
+	fmt.Println("[FRONTEND] Starting frontend server...")
 
 	http.Handle("/", http.FileServer(http.Dir("../../web")))
 	http.ListenAndServe(":8080", nil)
 
+	fmt.Println("[FRONTEND] Started frontend server...")
+
+	fmt.Println("[GLOBAL] Started Gochess...")
 }
