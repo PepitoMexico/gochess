@@ -2,7 +2,6 @@ package user
 
 import (
 	"database/sql"
-	"fmt"
 	"gochess/gochess/internal/config"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -10,8 +9,9 @@ import (
 )
 
 type User struct {
-	Name string
-	Id   string
+	Name     string
+	Id       string
+	Password string
 }
 
 func getUsers() {
@@ -26,8 +26,8 @@ func getUserbyName() {
 
 }
 
-func New(name string, id string) User {
-	return User{name, id}
+func New(name string, id string, password string) User {
+	return User{name, id, password}
 }
 
 func CreateUser(name string) User {
@@ -37,13 +37,13 @@ func CreateUser(name string) User {
 	database := config.GetConfig().GetString("database.database")
 	username := config.GetConfig().GetString("database.username")
 	password := config.GetConfig().GetString("database.password")
-	fmt.Print(username + ":" + password + "@tcp(" + host + ")/" + database)
 	db, err := sql.Open(driver, username+":"+password+"@tcp("+host+")/"+database)
 	if err != nil {
 		panic(err)
 	}
 	id := uuid.New().String()
-	user := New(name, id)
+	user := New(name, id, password)
+
 	db.Exec("INSERT INTO `users` (`id`, `name`) VALUES ('" + user.Id + "', '" + user.Name + "')")
 	return user
 }

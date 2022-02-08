@@ -2,6 +2,8 @@ package party
 
 import (
 	"gochess/gochess/internal/user"
+
+	"github.com/notnil/chess"
 )
 
 type Party struct {
@@ -9,6 +11,7 @@ type Party struct {
 	id          string
 	blackPlayer user.User
 	whitePlayer user.User
+	game        *chess.Game
 }
 
 func launchParty() {
@@ -31,8 +34,19 @@ func getPartyByID() {
 
 }
 
+func (party *Party) playMove(move *chess.Move) {
+	game := party.game
+	moves := game.ValidMoves()
+	for _, m := range moves {
+		if m == move {
+			game.Move(move)
+		}
+	}
+
+}
+
 func New(name string, id string, blackPlayer user.User, whitePlayer user.User) Party {
-	return Party{name, id, blackPlayer, whitePlayer}
+	return Party{name, id, blackPlayer, whitePlayer, chess.NewGame()}
 }
 
 func (party *Party) setName(name string) {

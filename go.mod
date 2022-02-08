@@ -7,6 +7,8 @@ require (
 	github.com/spf13/viper v1.9.0
 )
 
+require github.com/notnil/chess v1.7.3
+
 require (
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/go-sql-driver/mysql v1.6.0

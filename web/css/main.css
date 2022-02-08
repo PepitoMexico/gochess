@@ -1,23 +1,47 @@
 body{
-    background-color: hsl(236, 32%, 26%);
+    background-color: #2d3058;
    margin:0px;
-padding:0px;
-width:100%;
+    padding:0px;
+    width:100%;
     height: 100%;
 }
-header{
-    background-color: hsl(236, 32%, 15%);
+
+.top-header{
+    background-color :#04072f;
     width: 100%;
-    height: 90px;
-    color: white;
-    margin-top: 0;
+    position: fixed;
+}
+.logo{
+    margin-top: 0px;
+    width: 10px;
+    height: 30px;
+}
+
+nav{
+    margin-top: 0px;
     display: flex;
 }
 
-.logo{
+.menu-button{
+    font-family: Comfortaa;
     margin-top: 0px;
+    background-color: #2196f3;
+    color: whitesmoke;
+    font-size: 30px;
+    display: inline-block;
+    width: 100%;
+    text-align: center; 
+    vertical-align: middle;
 }
 
-.menu{
+.board{
+    vertical-align: middle;
+    position: absolute;
+    top:20%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
     margin: auto;
 }
+          
